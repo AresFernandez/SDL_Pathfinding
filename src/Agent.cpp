@@ -76,6 +76,10 @@ void Agent::setVelocity(Vector2D _velocity)
 	velocity = _velocity;
 }
 
+void Agent::setGraph(Graph* _graph) {
+	graph = _graph;
+}
+
 void Agent::update(float dtime, SDL_Event *event)
 {
 
@@ -124,6 +128,10 @@ int Agent::getCurrentTargetIndex()
 int Agent::getPathSize()
 {
 	return path.points.size();
+}
+
+Graph* Agent::getGraph() {
+	return graph;
 }
 
 Vector2D Agent::getPathPoint(int idx)

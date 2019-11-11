@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 #include "SDL_SimpleApp.h"
 #include "Path.h"
+#include "Graph.h"
 #include "Vector2D.h"
 #include "utils.h"
 
@@ -19,11 +20,13 @@ public:
 		virtual ~SteeringBehavior() {};
 		virtual void applySteeringForce(Agent *agent, float dtime) {};
 	};
+
 private:
 	SteeringBehavior *steering_behaviour;
 	Vector2D position;
 	Vector2D velocity;
 	Vector2D target;
+	Graph* graph;
 
 	// Pathfinding
 	Path path;
@@ -53,10 +56,12 @@ public:
 	void setPosition(Vector2D position);
 	void setTarget(Vector2D target);
 	void setVelocity(Vector2D velocity);
+	void setGraph(Graph* graph);
 	void addPathPoint(Vector2D point);
 	void setCurrentTargetIndex(int idx);
 	int getCurrentTargetIndex();
 	int getPathSize();
+	Graph* getGraph();
 	Vector2D getPathPoint(int idx);
 	void clearPath();
 	void update(float dtime, SDL_Event *event);

@@ -4,3 +4,11 @@
 Graph::Graph() {
 
 }
+
+Graph::Graph(Grid* grid) {
+
+}
+
+Graph::~Graph() {
+
+}
