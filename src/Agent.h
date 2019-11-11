@@ -9,7 +9,6 @@
 #include "Vector2D.h"
 #include "utils.h"
 
-
 class Agent
 {
 public:
