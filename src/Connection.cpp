@@ -5,10 +5,10 @@ Connection::Connection() {
 
 }
 
-Connection::Connection(float _cost, Node* _nodeFrom, Node* _nodeTo) {
+Connection::Connection(float _cost, float _nodeFrom, float _nodeTo) {
 	cost = _cost;
-	nodeFrom = _nodeFrom;
-	nodeTo = _nodeTo;
+	nodeFromID = _nodeFrom;
+	nodeToID = _nodeTo;
 }
 
 Connection::~Connection() {

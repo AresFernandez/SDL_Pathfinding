@@ -1,9 +1,5 @@
 #pragma once
+#include "Vector2D.h"
 
-class Node {
-public:
-	Node();
-	Node(int x, int y);
-	~Node();
-
-};
+Vector2D GetNodeCoords(float nodeID);
+float GetNodeID(Vector2D nodeCoords);

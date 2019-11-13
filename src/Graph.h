@@ -10,7 +10,7 @@ public:
 	Graph(Grid* grid);
 	~Graph();
 
-	std::map<Node* , std::vector<Connection>> map;
+	std::map<float , std::vector<Connection>> map;
 
 
 

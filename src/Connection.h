@@ -4,10 +4,10 @@
 class Connection {
 public:
 	Connection();
-	Connection(float cost, Node* nodeFrom, Node* nodeTo);
+	Connection(float cost, float nodeFrom, float nodeTo);
 	~Connection();
 private:
 	float cost;
-	Node* nodeFrom;
-	Node* nodeTo;
+	float nodeFromID;
+	float nodeToID;
 };
