@@ -6,7 +6,6 @@ public:
 	Connection();
 	Connection(float cost, float nodeFrom, float nodeTo);
 	~Connection();
-private:
 	float cost;
 	float nodeFromID;
 	float nodeToID;
