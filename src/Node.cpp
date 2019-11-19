@@ -1,7 +1,21 @@
 #pragma once
 #include "Node.h"
 
-Vector2D GetNodeCoords(float nodeID) {
+Node::Node() : x(-1), y(-1) {}
+
+Node::Node(Vector2D pos) : x(pos.x), y(pos.y) {}
+
+Node::Node(int _x, int _y) : x(_x), y(_y) {}
+
+Node::~Node() {}
+
+std::ostream& operator<<(std::ostream& output, const Node& node)
+{
+	output << node.x << " - " << node.y;
+	return output;
+}
+
+Vector2D NodeUtils::GetNodeCoords(float nodeID) {
 	int x = nodeID;
 	float y = nodeID - x;
 	
@@ -19,7 +33,7 @@ Vector2D GetNodeCoords(float nodeID) {
 	return Vector2D(x, y);
 }
 
-float GetNodeID(Vector2D nodeCoords)
+float NodeUtils::GetNodeID(Vector2D nodeCoords)
 {
 	float auxY = nodeCoords.y;
 

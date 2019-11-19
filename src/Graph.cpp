@@ -6,26 +6,32 @@ Graph::Graph() {
 
 }
 
-Graph::Graph(Grid* grid) {
+Graph::Graph(Grid* grid)
+{
 	map.clear();
+
 	for (int i = 0; i < grid->getNumCellY(); i++)
 	{
 		for (int j = 0; j < grid->getNumCellX(); j++)
 		{
 			if (grid->isValidCell(Vector2D(j, i))) //Si la meva posició és vàlida
 			{
-				float cellKey = GetNodeID(Vector2D(j, i));
-				map.insert(std::pair<float,std::vector<Connection>>(cellKey, std::vector<Connection>())); //Insertem el node al map amb les connexions buides
+				Node myNode = Node(Vector2D(j, i));
+				std::cout << myNode << " or ";
+				map.insert(std::pair<Node, std::vector<Connection>>(myNode, std::vector<Connection>()));//Insertem el node al map amb les connexions buides
 
-				int conn = 0;
+				Node myNewNode = Node(Vector2D(j, i));
+				auto it = map.find(myNewNode);
+				std::cout << it->first << std::endl;
+				//int conn = 0;
 				////Comprovem les seves conexions circundants
 				////Cantonada superior esquerra
-				if (grid->isValidCell(Vector2D(j - 1, i - 1)))
+				/*if (grid->isValidCell(Vector2D(j - 1, i - 1)))
 				{
 					conn++;
 					Connection aux = Connection(1, cellKey, GetNodeID(Vector2D(j - 1, i - 1)));
 					map.at(cellKey).push_back(aux);
-				}
+				}*/
 				////Cantonada superior dreta
 				//if (grid->isValidCell(Vector2D(j + 1, i - 1)))
 				//{
@@ -62,7 +68,7 @@ Graph::Graph(Grid* grid) {
 				//	map[cellKey].push_back(Connection(1, cellKey, GetNodeID(Vector2D(j + 1, i))));
 				//}
 
-				std::cout << cellKey << " -> " << conn << std::endl;
+				//std::cout << cellKey << " -> " << conn << std::endl;
 			}
 		}
 	}
@@ -78,19 +84,19 @@ Graph::Graph(Grid* grid) {
 	//	std::cout << std::endl;
 	//}
 
-	for (int i = 0; i < grid->getNumCellY(); i++)
-	{
-		for (int j = 0; j < grid->getNumCellX(); j++)
-		{
-			if (grid->isValidCell(Vector2D(j, i))) //Si la meva posició és vàlida
-			{
-				auto it = map.find(GetNodeID(Vector2D(j, i)));
-				if (it != map.end()) {
-					std::cout << j << "-" << i << " -> " << it->second.size() << std::endl;
-				}
-			}
-		}
-	}
+	//for (int i = 0; i < grid->getNumCellY(); i++)
+	//{
+	//	for (int j = 0; j < grid->getNumCellX(); j++)
+	//	{
+	//		if (grid->isValidCell(Vector2D(j, i))) //Si la meva posició és vàlida
+	//		{
+	//			auto it = map.find(GetNodeID(Vector2D(j, i)));
+	//			if (it != map.end()) {
+	//				std::cout << j << "-" << i << " -> " << it->second.size() << std::endl;
+	//			}
+	//		}
+	//	}
+	//}
 }
 
 Graph::~Graph() {
