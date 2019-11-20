@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 #include "SDL_SimpleApp.h"
 #include "Path.h"
+#include "Pathfinding.h"
 #include "Graph.h"
 #include "Vector2D.h"
 #include "utils.h"
@@ -22,6 +23,7 @@ public:
 
 private:
 	SteeringBehavior *steering_behaviour;
+	Pathfinding* pathfinding_Algorithm;
 	Vector2D position;
 	Vector2D velocity;
 	Vector2D target;

@@ -4,9 +4,9 @@
 class Connection {
 public:
 	Connection();
-	Connection(float cost, float nodeFrom, float nodeTo);
+	Connection(float cost, int nodeFrom, int nodeTo);
 	~Connection();
 	float cost;
-	float nodeFromID;
-	float nodeToID;
+	int nodeFromID;
+	int nodeToID;
 };
