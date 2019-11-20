@@ -54,12 +54,14 @@ public:
 	float getMaxForce();
 	float getMass();
 	void setBehavior(SteeringBehavior *behavior);
+	void setPathFindingAlgorithm(Pathfinding *algorithm);
 	void setPosition(Vector2D position);
 	void setTarget(Vector2D target);
 	void setVelocity(Vector2D velocity);
 	void setGraph(Graph* graph);
 	void addPathPoint(Vector2D point);
 	void setCurrentTargetIndex(int idx);
+	void calculatePath(int _initialNodeID, int _finalNodeID);
 	int getCurrentTargetIndex();
 	int getPathSize();
 	Graph* getGraph();

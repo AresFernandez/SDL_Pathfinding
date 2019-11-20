@@ -8,7 +8,7 @@ Graph::Graph() {
 
 Graph::Graph(Grid* grid) {
 	map.clear();
-	int w = grid->getNumCellX();
+	w = grid->getNumCellX();
 
 	for (int i = 0; i < grid->getNumCellY(); i++)
 	{

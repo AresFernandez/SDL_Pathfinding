@@ -14,6 +14,7 @@ ScenePathFindingMouse::ScenePathFindingMouse()
 	Agent *agent = new Agent;
 	agent->loadSpriteTexture("../res/soldier.png", 4);
 	agent->setBehavior(new PathFollowing);
+	agent->setPathFindingAlgorithm(new BFS);
 	agent->setTarget(Vector2D(-20,-20));
 	agent->setGraph(new Graph(maze));
 	agents.push_back(agent);
@@ -59,7 +60,10 @@ void ScenePathFindingMouse::update(float dtime, SDL_Event *event)
 		{
 			Vector2D cell = maze->pix2cell(Vector2D((float)(event->button.x), (float)(event->button.y)));
 			if (maze->isValidCell(cell)) {
-				agents[0]->addPathPoint(maze->cell2pix(cell));
+				int initialPosID = GetNodeID(maze->pix2cell(agents[0]->getPosition()), agents[0]->getGraph()->w);
+				int finalPosID = GetNodeID(cell, agents[0]->getGraph()->w);
+
+				agents[0]->calculatePath(initialPosID,finalPosID);
 			}
 		}
 		break;

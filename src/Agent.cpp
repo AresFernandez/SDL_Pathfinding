@@ -31,6 +31,11 @@ void Agent::setBehavior(SteeringBehavior *behavior)
 	steering_behaviour = behavior;
 }
 
+void Agent::setPathFindingAlgorithm(Pathfinding * algorithm)
+{
+	pathfinding_Algorithm = algorithm;
+}
+
 Vector2D Agent::getPosition()
 {
 	return position;
@@ -148,6 +153,17 @@ void Agent::clearPath()
 void Agent::setCurrentTargetIndex(int idx)
 {
 	currentTargetIndex = idx;
+}
+
+void Agent::calculatePath(int _initialNodeID, int _finalNodeID)
+{
+	path = pathfinding_Algorithm->calculatePath(_initialNodeID, _finalNodeID, graph);
+	for (int i = 0; i < path.points.size(); i++)
+	{
+		std::cout << std::endl << std::endl;
+		std::cout << path.points[i].x << " " << path.points[i].y << std::endl;
+		
+	}
 }
 
 void Agent::draw()
