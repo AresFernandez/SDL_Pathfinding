@@ -10,9 +10,8 @@ GBFS::~GBFS()
 
 Path GBFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Grid* grid)
 {
-	std::cout << "Dijkstra: " << std::endl;
+	std::cout << "GBFS: " << std::endl;
 	int nodesExplored = 0;
-	float pathCost = 0;
 
 	Path tempPath;
 
@@ -21,9 +20,6 @@ Path GBFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Gr
 
 	std::map<int, int> cameFrom;		// Ens creem un map per guardar de quin node venim
 	cameFrom[_initialNodeID] = NULL;
-
-	std::map<int, float> costSoFar;		// Ens creem un map per guardar el cost acumulat
-	costSoFar[_initialNodeID] = 0;
 
 	bool earlyExit = false;
 
@@ -48,34 +44,18 @@ Path GBFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Gr
 		{
 			auto it = cameFrom.find(con.nodeToID);				// Busquem si hem explorat el node abans
 
-			float new_cost = costSoFar[current.first] + con.cost;	// Calculem el cost so far per aquell node
-
 			if (it == cameFrom.end())							// Si no hem explorat aquell node abans
 			{
-				costSoFar[con.nodeToID] = new_cost;		// Assignem el nou cost so far
-				frontier.push_back(std::pair<int, float>(con.nodeToID, new_cost));	// Posem el node a la frontera
+				frontier.push_back(std::pair<int, float>(con.nodeToID, calculateHeuristic(con.nodeToID, _finalNodeID, graph->w)));	// Posem el node a la frontera
 				cameFrom[con.nodeToID] = current.first;	// Assignem de quin node prové el nou node
 			}
-			else if (new_cost < costSoFar[con.nodeToID])		// Si ja l'hem explorat però trobem un camí més curt
-			{
-				costSoFar[con.nodeToID] = new_cost;	// Assignem el nou cost so far
-				auto it2 = std::find_if(frontier.begin(), frontier.end(),
-					[&con](const std::pair<int, float>& element) { return element.first == con.nodeToID; }); // Busquem el node de la frontera antic
-				frontier.erase(it2);	// Esborrem el node antic que té un cost més elevat
-				frontier.push_back(std::pair<int, float>(con.nodeToID, new_cost)); // Posem el node a la frontera amb el cost actualitzat
-				cameFrom[con.nodeToID] = current.first; // Assignem de quin node prové el nou node
-			}
-
-
 		}
-
 		frontier.erase(frontier.begin()); // Treiem el node que acabem de explorar
 	}
 
 	if (earlyExit) // Si hem trobat el node final
 	{
 		int current = _finalNodeID;
-		pathCost = costSoFar[_finalNodeID];
 
 		while (current != NULL)
 		{
@@ -87,7 +67,6 @@ Path GBFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Gr
 		tempPath.points.push_back(grid->cell2pix(GetNodeCoords(_initialNodeID, graph->w)));
 
 	std::cout << "Nodes explored: " << nodesExplored << std::endl;
-	std::cout << "Total path cost: " << pathCost << std::endl;
 
 	return tempPath;
 }
