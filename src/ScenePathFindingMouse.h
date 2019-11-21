@@ -20,6 +20,7 @@ class ScenePathFindingMouse :
 {
 public:
 	ScenePathFindingMouse();
+	ScenePathFindingMouse(int behavior);
 	~ScenePathFindingMouse();
 	void update(float dtime, SDL_Event *event);
 	void draw();

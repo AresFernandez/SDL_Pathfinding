@@ -2,7 +2,7 @@
 
 using namespace std;
 
-ScenePathFindingMouse::ScenePathFindingMouse()
+ScenePathFindingMouse::ScenePathFindingMouse(int behavior)
 {
 	draw_grid = false;
 	maze = new Grid("../res/maze.csv");
@@ -14,7 +14,22 @@ ScenePathFindingMouse::ScenePathFindingMouse()
 	Agent *agent = new Agent;
 	agent->loadSpriteTexture("../res/soldier.png", 4);
 	agent->setBehavior(new PathFollowing);
-	agent->setPathFindingAlgorithm(new MultipleAStar);
+	switch (behavior)
+	{
+		case 1:
+			agent->setPathFindingAlgorithm(new BFS);
+			break;
+		case 2:
+			agent->setPathFindingAlgorithm(new Dijkstra);
+			break;
+		case 3:
+			agent->setPathFindingAlgorithm(new GBFS);
+			break;
+		case 4:
+			agent->setPathFindingAlgorithm(new AStar);
+			break;
+	}
+
 	agent->setTarget(Vector2D(-20,-20));
 	agent->setGraph(new Graph(maze));
 	agents.push_back(agent);

@@ -62,7 +62,7 @@ void SceneMultipleAStar::update(float dtime, SDL_Event *event)
 			Vector2D cell = maze->pix2cell(Vector2D((float)(event->button.x), (float)(event->button.y)));
 			if (maze->isValidCell(cell))
 			{
-				vID.push_back(GetNodeID(cell, agents[0]->getGraph()->w));
+					vID.push_back(GetNodeID(cell, agents[0]->getGraph()->w));
 			}
 		}
 		if (event->button.button == SDL_BUTTON_RIGHT)
