@@ -161,6 +161,12 @@ void Agent::calculatePath(int _initialNodeID, int _finalNodeID, Grid* grid)
 	path = pathfinding_Algorithm->calculatePath(_initialNodeID, _finalNodeID, graph, grid);
 }
 
+void Agent::calculateMultiplePath(int _initialNodeID, int _finalNodeID, std::vector<int> _vID, Grid* grid) 
+{
+	clearPath();
+	path = pathfinding_Algorithm->calculateMultiplePath(_initialNodeID, _finalNodeID, _vID, graph, grid);
+}
+
 void Agent::draw()
 {
 	// Path

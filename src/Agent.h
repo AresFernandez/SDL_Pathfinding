@@ -64,6 +64,7 @@ public:
 	void addPathPoint(Vector2D point);
 	void setCurrentTargetIndex(int idx);
 	void calculatePath(int _initialNodeID, int _finalNodeID, Grid* grid);
+	void calculateMultiplePath(int _initialNodeID, int _finalNodeID, std::vector<int> _vID, Grid* grid);
 	int getCurrentTargetIndex();
 	int getPathSize();
 	Graph* getGraph();

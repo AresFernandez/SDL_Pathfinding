@@ -8,19 +8,15 @@
 #include "Agent.h"
 #include "Seek.h"
 #include "PathFollowing.h"
-#include "BFS.h"
-#include "GBFS.h"
-#include "Dijkstra.h"
-#include "AStar.h"
 #include "MultipleAStar.h"
 #include "Grid.h"
 
-class ScenePathFindingMouse :
+class SceneMultipleAStar :
 	public Scene
 {
 public:
-	ScenePathFindingMouse();
-	~ScenePathFindingMouse();
+	SceneMultipleAStar();
+	~SceneMultipleAStar();
 	void update(float dtime, SDL_Event *event);
 	void draw();
 	const char* getTitle();
@@ -30,7 +26,11 @@ private:
 
 	Grid *maze;
 	bool draw_grid;
-		
+
+	std::vector<int> vID;
+
+	int finalID;
+
 	void drawMaze();
 	void drawCoin();
 	SDL_Texture *background_texture;

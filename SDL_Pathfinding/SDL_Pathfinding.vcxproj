@@ -140,8 +140,10 @@
     <ClCompile Include="..\src\Graph.cpp" />
     <ClCompile Include="..\src\Grid.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\MultipleAStar.cpp" />
     <ClCompile Include="..\src\Node.cpp" />
     <ClCompile Include="..\src\PathFollowing.cpp" />
+    <ClCompile Include="..\src\SceneMultipleAStar.cpp" />
     <ClCompile Include="..\src\ScenePathFindingMouse.cpp" />
     <ClCompile Include="..\src\SDL_SimpleApp.cpp" />
     <ClCompile Include="..\src\Seek.cpp" />
@@ -156,10 +158,12 @@
     <ClInclude Include="..\src\GBFS.h" />
     <ClInclude Include="..\src\Graph.h" />
     <ClInclude Include="..\src\Grid.h" />
+    <ClInclude Include="..\src\MultipleAStar.h" />
     <ClInclude Include="..\src\Node.h" />
     <ClInclude Include="..\src\Path.h" />
     <ClInclude Include="..\src\Pathfinding.h" />
     <ClInclude Include="..\src\PathFollowing.h" />
+    <ClInclude Include="..\src\SceneMultipleAStar.h" />
     <ClInclude Include="..\src\ScenePathFindingMouse.h" />
     <ClInclude Include="..\src\Seek.h" />
     <ClInclude Include="..\src\utils.h" />
