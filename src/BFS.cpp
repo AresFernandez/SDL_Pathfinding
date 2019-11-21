@@ -10,6 +10,9 @@ BFS::~BFS()
 
 Path BFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Grid* grid)
 {
+	std::cout << "BFS: " << std::endl;
+	int nodesExplored = 0;
+
 	Path tempPath;
 
 	std::queue<int> frontier;			// Creem la frontera
@@ -23,6 +26,7 @@ Path BFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Gri
 
 	while (frontier.size() > 0 && !earlyExit)			// Recorrem la frontera dins que es buidi
 	{
+		nodesExplored++;
 		int current = frontier.front();			// Agafem el primer node de la frontera
 
 		if (current == _finalNodeID)
@@ -61,6 +65,8 @@ Path BFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Gri
 	}
 	else
 		tempPath.points.push_back(grid->cell2pix(GetNodeCoords(_initialNodeID, graph->w)));
+
+	std::cout << "Nodes explored: " << nodesExplored << std::endl;
 
 	return tempPath;
 }
