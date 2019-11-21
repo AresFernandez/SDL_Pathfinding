@@ -9,6 +9,7 @@
 #include "Seek.h"
 #include "PathFollowing.h"
 #include "BFS.h"
+#include "GBFS.h"
 #include "Dijkstra.h"
 #include "Grid.h"
 

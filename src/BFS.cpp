@@ -29,10 +29,6 @@ Path BFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Gri
 		nodesExplored++;
 		int current = frontier.front();			// Agafem el primer node de la frontera
 
-		if (current == _finalNodeID)
-		{
-			break;
-		}
 
 		for each (Connection con in graph->map[current])	// Recorrem les seves connexions
 		{

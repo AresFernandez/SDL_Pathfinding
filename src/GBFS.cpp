@@ -1,20 +1,20 @@
-#include "Dijkstra.h"
+#include "GBFS.h"
 
-Dijkstra::Dijkstra()
+GBFS::GBFS()
 {
 }
 
-Dijkstra::~Dijkstra()
+GBFS::~GBFS()
 {
 }
 
-Path Dijkstra::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Grid* grid)
+Path GBFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Grid* grid)
 {
 	std::cout << "Dijkstra: " << std::endl;
 	int nodesExplored = 0;
 	float pathCost = 0;
 
-	Path tempPath;	
+	Path tempPath;
 
 	std::vector<std::pair<int, float>> frontier; // Creem la frontera
 	frontier.push_back(std::pair<int, float>(_initialNodeID, 0)); // Li afegim el node inicial
@@ -49,7 +49,7 @@ Path Dijkstra::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph
 			auto it = cameFrom.find(con.nodeToID);				// Busquem si hem explorat el node abans
 
 			float new_cost = costSoFar[current.first] + con.cost;	// Calculem el cost so far per aquell node
-			
+
 			if (it == cameFrom.end())							// Si no hem explorat aquell node abans
 			{
 				costSoFar[con.nodeToID] = new_cost;		// Assignem el nou cost so far
@@ -90,4 +90,9 @@ Path Dijkstra::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph
 	std::cout << "Total path cost: " << pathCost << std::endl;
 
 	return tempPath;
+}
+
+float GBFS::calculateHeuristic(int _currentNodeID, int _finalNodeID, int w)
+{
+	return Vector2D::Distance(GetNodeCoords(_currentNodeID, w), GetNodeCoords(_finalNodeID, w));
 }
