@@ -73,6 +73,9 @@ void SceneMultipleAStar::update(float dtime, SDL_Event *event)
 				int initialPosID = GetNodeID(maze->pix2cell(agents[0]->getPosition()), agents[0]->getGraph()->w);
 				int finalPosID = finalID = GetNodeID(cell, agents[0]->getGraph()->w);
 				agents[0]->calculateMultiplePath(initialPosID, finalPosID, vID, maze);
+
+				vID.clear();
+				finalID = -1;
 			}
 		}
 		break;
