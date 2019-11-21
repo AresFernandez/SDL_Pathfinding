@@ -29,8 +29,7 @@ private:
 	Vector2D target;
 	Graph* graph;
 
-	// Pathfinding
-	Path path;
+
 	int currentTargetIndex;
 
 	float mass;
@@ -45,6 +44,9 @@ private:
 	int sprite_h;
 
 public:
+
+	// Pathfinding
+	Path path;
 	Agent();
 	~Agent();
 	Vector2D getPosition();
@@ -61,7 +63,7 @@ public:
 	void setGraph(Graph* graph);
 	void addPathPoint(Vector2D point);
 	void setCurrentTargetIndex(int idx);
-	void calculatePath(int _initialNodeID, int _finalNodeID);
+	void calculatePath(int _initialNodeID, int _finalNodeID, Grid* grid);
 	int getCurrentTargetIndex();
 	int getPathSize();
 	Graph* getGraph();

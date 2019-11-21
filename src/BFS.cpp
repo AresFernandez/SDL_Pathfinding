@@ -8,7 +8,7 @@ BFS::~BFS()
 {
 }
 
-Path BFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph)
+Path BFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Grid* grid)
 {
 	Path tempPath;
 
@@ -55,19 +55,12 @@ Path BFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph)
 
 		while (current != NULL)
 		{
-			tempPath.points.insert(tempPath.points.begin(), GetNodeCoords(current, graph->w));
+			tempPath.points.insert(tempPath.points.begin(), grid->cell2pix(GetNodeCoords(current, graph->w)));
 			current = cameFrom[current];
 		}
 	}
 	else
-	{
-		tempPath.points.push_back( GetNodeCoords(_initialNodeID, graph->w) );
-	}
-
-	for (int i = 0; i < tempPath.points.size(); i++)
-	{
-		std::cout << tempPath.points[i].x << " " << tempPath.points[i].y << std::endl;
-	} 
+		tempPath.points.push_back(grid->cell2pix(GetNodeCoords(_initialNodeID, graph->w)));
 
 	return tempPath;
 }

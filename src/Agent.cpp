@@ -155,15 +155,10 @@ void Agent::setCurrentTargetIndex(int idx)
 	currentTargetIndex = idx;
 }
 
-void Agent::calculatePath(int _initialNodeID, int _finalNodeID)
+void Agent::calculatePath(int _initialNodeID, int _finalNodeID, Grid* grid)
 {
-	path = pathfinding_Algorithm->calculatePath(_initialNodeID, _finalNodeID, graph);
-	for (int i = 0; i < path.points.size(); i++)
-	{
-		std::cout << std::endl << std::endl;
-		std::cout << path.points[i].x << " " << path.points[i].y << std::endl;
-		
-	}
+	clearPath();
+	path = pathfinding_Algorithm->calculatePath(_initialNodeID, _finalNodeID, graph, grid);
 }
 
 void Agent::draw()

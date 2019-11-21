@@ -9,6 +9,5 @@ public:
 	Pathfinding() {};
 	virtual ~Pathfinding() {};
 
-	virtual Path calculatePath(int _initialNodeID, int _finalNodeID, Graph* graph) { return Path(); };
-
+	virtual Path calculatePath(int _initialNodeID, int _finalNodeID, Graph* graph, Grid* grid) { return Path(); };
 };

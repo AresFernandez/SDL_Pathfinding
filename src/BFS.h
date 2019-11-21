@@ -9,5 +9,5 @@ public:
 	BFS();
 	~BFS();
 
-	Path calculatePath(int _initialNodeID, int _finalNodeID, Graph* graph) override;
+	Path calculatePath(int _initialNodeID, int _finalNodeID, Graph* graph, Grid* grid) override;
 };
