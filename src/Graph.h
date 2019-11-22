@@ -10,7 +10,7 @@ public:
 	Graph(Grid* grid);
 	~Graph();
 
-	std::map<int , std::vector<Connection>> map;
+	std::map<int , std::vector<Connection*>> map;
 
 	int w;
 

@@ -65,6 +65,7 @@ public:
 	void setCurrentTargetIndex(int idx);
 	void calculatePath(int _initialNodeID, int _finalNodeID, Grid* grid);
 	void calculateMultiplePath(int _initialNodeID, int _finalNodeID, std::vector<int> _vID, Grid* grid);
+	void addEnemyCost(int _enemyPosID, Grid* grid);
 	int getCurrentTargetIndex();
 	int getPathSize();
 	Graph* getGraph();

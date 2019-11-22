@@ -45,27 +45,27 @@ Path AStar::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, G
 			break;
 		}
 
-		for each (Connection con in graph->map[current.first])	// Recorrem les seves connexions
+		for each (Connection* con in graph->map[current.first])	// Recorrem les seves connexions
 		{
-			auto it = cameFrom.find(con.nodeToID);				// Busquem si hem explorat el node abans
+			auto it = cameFrom.find(con->nodeToID);				// Busquem si hem explorat el node abans
 
-			float new_cost = costSoFar[current.first] + con.cost;	// Calculem el cost so far per aquell node
-			float heuristic = calculateHeuristic(con.nodeToID, _finalNodeID, graph->w);
+			float new_cost = costSoFar[current.first] + con->cost;	// Calculem el cost so far per aquell node
+			float heuristic = calculateHeuristic(con->nodeToID, _finalNodeID, graph->w);
 
 			if (it == cameFrom.end())							// Si no hem explorat aquell node abans
 			{
-				costSoFar[con.nodeToID] = new_cost;		// Assignem el nou cost so far
-				frontier.push_back(std::pair<int, float>(con.nodeToID, new_cost + heuristic));	// Posem el node a la frontera
-				cameFrom[con.nodeToID] = current.first;	// Assignem de quin node prové el nou node
+				costSoFar[con->nodeToID] = new_cost;		// Assignem el nou cost so far
+				frontier.push_back(std::pair<int, float>(con->nodeToID, new_cost + heuristic));	// Posem el node a la frontera
+				cameFrom[con->nodeToID] = current.first;	// Assignem de quin node prové el nou node
 			}
-			else if (new_cost < costSoFar[con.nodeToID])		// Si ja l'hem explorat però trobem un camí més curt
+			else if (new_cost < costSoFar[con->nodeToID])		// Si ja l'hem explorat però trobem un camí més curt
 			{
-				costSoFar[con.nodeToID] = new_cost;	// Assignem el nou cost so far
+				costSoFar[con->nodeToID] = new_cost;	// Assignem el nou cost so far
 				auto it2 = std::find_if(frontier.begin(), frontier.end(),
-					[&con](const std::pair<int, float>& element) { return element.first == con.nodeToID; }); // Busquem el node de la frontera antic
+					[&con](const std::pair<int, float>& element) { return element.first == con->nodeToID; }); // Busquem el node de la frontera antic
 				frontier.erase(it2);	// Esborrem el node antic que té un cost més elevat
-				frontier.push_back(std::pair<int, float>(con.nodeToID, new_cost + heuristic)); // Posem el node a la frontera amb el cost actualitzat
-				cameFrom[con.nodeToID] = current.first; // Assignem de quin node prové el nou node
+				frontier.push_back(std::pair<int, float>(con->nodeToID, new_cost + heuristic)); // Posem el node a la frontera amb el cost actualitzat
+				cameFrom[con->nodeToID] = current.first; // Assignem de quin node prové el nou node
 			}
 
 

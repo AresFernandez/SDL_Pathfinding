@@ -40,14 +40,14 @@ Path GBFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Gr
 			break;
 		}
 
-		for each (Connection con in graph->map[current.first])	// Recorrem les seves connexions
+		for each (Connection* con in graph->map[current.first])	// Recorrem les seves connexions
 		{
-			auto it = cameFrom.find(con.nodeToID);				// Busquem si hem explorat el node abans
+			auto it = cameFrom.find(con->nodeToID);				// Busquem si hem explorat el node abans
 
 			if (it == cameFrom.end())							// Si no hem explorat aquell node abans
 			{
-				frontier.push_back(std::pair<int, float>(con.nodeToID, calculateHeuristic(con.nodeToID, _finalNodeID, graph->w)));	// Posem el node a la frontera
-				cameFrom[con.nodeToID] = current.first;	// Assignem de quin node prové el nou node
+				frontier.push_back(std::pair<int, float>(con->nodeToID, calculateHeuristic(con->nodeToID, _finalNodeID, graph->w)));	// Posem el node a la frontera
+				cameFrom[con->nodeToID] = current.first;	// Assignem de quin node prové el nou node
 			}
 		}
 		frontier.erase(frontier.begin()); // Treiem el node que acabem de explorar

@@ -167,6 +167,46 @@ void Agent::calculateMultiplePath(int _initialNodeID, int _finalNodeID, std::vec
 	path = pathfinding_Algorithm->calculateMultiplePath(_initialNodeID, _finalNodeID, _vID, graph, grid);
 }
 
+void Agent::addEnemyCost(int _enemyPosID, Grid* grid)
+{
+	auto it = graph->map.find(_enemyPosID);
+	if (it != graph->map.end())
+	{
+		for each (Connection* c in it->second)
+		{
+			auto it2 = graph->map.find(c->nodeToID);
+			for each (Connection* c2 in it2->second)
+			{
+				if (c2->nodeToID == _enemyPosID)
+				{
+					c2->cost *= 200;
+					break;
+				}
+			}
+		}
+		for each (Connection* c in it->second)
+		{
+			auto it2 = graph->map.find(c->nodeToID);
+			for each (Connection* c2 in it2->second)
+			{
+				if (c2->nodeToID == _enemyPosID)
+				{
+					std::cout << c2->cost << std::endl;
+					break;
+				}
+			}
+		}
+
+	}
+
+	if (path.points.size() > 0) // Estem recorrent un path
+	{
+		calculatePath( GetNodeID(grid->pix2cell(getPosition()), graph->w) , GetNodeID(grid->pix2cell(path.points[path.points.size()-1]), graph->w), grid);
+	}
+
+
+}
+
 void Agent::draw()
 {
 	// Path

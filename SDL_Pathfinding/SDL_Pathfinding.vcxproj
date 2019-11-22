@@ -143,6 +143,7 @@
     <ClCompile Include="..\src\MultipleAStar.cpp" />
     <ClCompile Include="..\src\Node.cpp" />
     <ClCompile Include="..\src\PathFollowing.cpp" />
+    <ClCompile Include="..\src\SceneEnemies.cpp" />
     <ClCompile Include="..\src\SceneMultipleAStar.cpp" />
     <ClCompile Include="..\src\ScenePathFindingMouse.cpp" />
     <ClCompile Include="..\src\SDL_SimpleApp.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="..\src\Path.h" />
     <ClInclude Include="..\src\Pathfinding.h" />
     <ClInclude Include="..\src\PathFollowing.h" />
+    <ClInclude Include="..\src\SceneEnemies.h" />
     <ClInclude Include="..\src\SceneMultipleAStar.h" />
     <ClInclude Include="..\src\ScenePathFindingMouse.h" />
     <ClInclude Include="..\src\Seek.h" />

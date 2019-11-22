@@ -30,16 +30,16 @@ Path BFS::calculatePath(int _initialNodeID, int _finalNodeID, Graph * graph, Gri
 		int current = frontier.front();			// Agafem el primer node de la frontera
 
 
-		for each (Connection con in graph->map[current])	// Recorrem les seves connexions
+		for each (Connection* con in graph->map[current])	// Recorrem les seves connexions
 		{
-			auto it = cameFrom.find(con.nodeToID);			// Si no hem explorat aquell node abans, el posem a la frontera
+			auto it = cameFrom.find(con->nodeToID);			// Si no hem explorat aquell node abans, el posem a la frontera
 			if (it == cameFrom.end())						
 			{
-				frontier.push(con.nodeToID);
-				cameFrom[con.nodeToID] = current;
+				frontier.push(con->nodeToID);
+				cameFrom[con->nodeToID] = current;
 			}
 
-			if (con.nodeToID == _finalNodeID)
+			if (con->nodeToID == _finalNodeID)
 			{
 				earlyExit = true;
 				break;
