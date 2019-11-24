@@ -66,6 +66,7 @@ public:
 	void calculatePath(int _initialNodeID, int _finalNodeID, Grid* grid);
 	void calculateMultiplePath(int _initialNodeID, int _finalNodeID, std::vector<int> _vID, Grid* grid);
 	void addEnemyCost(int _enemyPosID, Grid* grid);
+	void addCostToNode(int _nodeID, float costToAdd);
 	int getCurrentTargetIndex();
 	int getPathSize();
 	Graph* getGraph();
@@ -73,6 +74,5 @@ public:
 	void clearPath();
 	void update(float dtime, SDL_Event *event);
 	void draw();
-	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
-	
+	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);	
 };
